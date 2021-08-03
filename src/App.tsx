@@ -1,8 +1,9 @@
 import React from 'react';
+import Routes from './constants/routes';
 
 function App() {
   return (
-    <h1>init project!!</h1>
+    <Routes />
   );
 }
 
