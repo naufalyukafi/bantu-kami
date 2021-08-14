@@ -139,6 +139,24 @@ main {
   background-color: rgb(99, 99, 231);
 }
 
+.title {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.card__container, .card {
+  width: 100%;
+}
+
+.card {
+  padding: 30px 20px;
+  margin: 28px 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
 /* 
 *
   footer

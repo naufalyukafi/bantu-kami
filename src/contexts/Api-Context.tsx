@@ -34,6 +34,7 @@ const ApiContext = (props: IContext) => {
   const getAllHospitalsProvince = async (provinceId: string, cityId: string, type: string) => {
     const listHospitals = await APISOURCE.getHospitalsProvinceId(provinceId, cityId, type);
     console.log('hos', listHospitals);
+    setHospitals(listHospitals);
     // setHospitals(listHospitals);
   };
 

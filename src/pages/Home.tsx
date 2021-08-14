@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Select from 'react-select';
+import CardHospital from '../components/CardHospital';
 import { MyContext } from '../contexts/Api-Context';
 
 const Home = () => {
@@ -27,7 +28,6 @@ const Home = () => {
   };
 
   const handleSubmit = () => {
-    console.log(idProvince + idCity + checked);
     getAllHospitalsProvince(idProvince, idCity, checked);
   };
 
@@ -79,7 +79,20 @@ const Home = () => {
           </div>
         </div>
         <button className="primary__button" type="button" onClick={handleSubmit}>Cari ...</button>
-        <p>You have selected <strong>{nameProvince}</strong> witch city <strong>{nameCity}</strong> and type id {checked}</p>
+        <div className="card__container">
+          {provinces !== [] && hospitals.length !== 0 ? <h1 className="title">Daftar Rumah Sakit</h1> : <h2>Tidak</h2>}
+          {hospitals.length !== 0 && hospitals.map((hospital) => (
+            <CardHospital
+              key={hospital.id}
+              id={hospital.id}
+              name={hospital.name}
+              bed_availability={hospital.bed_availability}
+              info={hospital.info}
+              phone={hospital.phone}
+              address={hospital.address}
+            />
+          ))}
+        </div>
       </div>
     </main>
   );
