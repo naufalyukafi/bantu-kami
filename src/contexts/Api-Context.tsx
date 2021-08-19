@@ -5,12 +5,13 @@ import {
 } from '../helpers/types';
 
 export const MyContext = createContext<IContextValue>({
-  provinces: [], getAllProvinces: () => {}, cities: [], getAllCityProvince: () => {}, hospitals: [], getAllHospitalsProvince: () => {},
+  provinces: [], getAllProvinces: () => {}, cities: [], getAllCityProvince: () => {}, hospitals: [], getAllHospitalsProvince: () => {}, isLoading: false,
 });
 const ApiContext = (props: IContext) => {
   const [provinces, setProvinces] = useState<IProvinces[]>([]);
   const [cities, setCities] = useState<ICities[]>([]);
   const [hospitals, setHospitals] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const getAllProvinces = async () => {
     const listProvinces = await APISOURCE.getListProvinces();
     const options = listProvinces.map((province: IProvinces) => ({
@@ -32,14 +33,18 @@ const ApiContext = (props: IContext) => {
   };
 
   const getAllHospitalsProvince = async (provinceId: string, cityId: string, type: string) => {
-    const listHospitals = await APISOURCE.getHospitalsProvinceId(provinceId, cityId, type);
-    console.log('hos', listHospitals);
-    setHospitals(listHospitals);
-    // setHospitals(listHospitals);
+    try {
+      setIsLoading(true);
+      const listHospitals = await APISOURCE.getHospitalsProvinceId(provinceId, cityId, type);
+      setHospitals(listHospitals);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const contextValue: IContextValue = {
-    provinces, getAllProvinces, cities, getAllCityProvince, hospitals, getAllHospitalsProvince,
+    provinces, getAllProvinces, cities, getAllCityProvince, hospitals, getAllHospitalsProvince, isLoading,
   };
 
   return (

@@ -60,6 +60,7 @@ body {
 .app__bar .app__bar-brand {
   display: flex;
   align-items: center;
+  text-align: center;
 }
 
 .app__bar .app__bar-brand h1 {
@@ -133,10 +134,23 @@ main {
   margin-top: 20px;
   border: none;
   font-size: 18px;
+  outline: none;
 }
 
 .primary__button:hover {
   background-color: rgb(99, 99, 231);
+}
+
+.secondary__button {
+  padding: 10px 50px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 10px 0;
+  outline: none;
+  width: 100%;
 }
 
 .title {
@@ -146,6 +160,7 @@ main {
 
 .card__container, .card {
   width: 100%;
+
 }
 
 .card {
@@ -155,6 +170,46 @@ main {
   width: 100%;
   border-radius: 5px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card__info {
+  width: 100%;
+}
+
+.card__bed {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 30px 50px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.card__warning {
+  background-color: red;
+  color: #fff;
+}
+
+.card__bed-warning {
+  background-color: var(--white);
+  color: red;
+}
+
+.card__info-title {
+  font-size: 18px;
+}
+
+.card__info-address {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.loading {
+  font-size: 28px;
+  margin-top: 20px;
 }
 
 /* 
@@ -198,6 +253,13 @@ footer p a {
     padding: 16px 32px;
   }
 
+  .card__bed {
+    width: auto;
+  }
+
+  .secondary__button, .card__info {
+    width: auto;
+  }
 }
 
 @media screen and (min-width: 850px) {

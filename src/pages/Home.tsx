@@ -10,7 +10,7 @@ const Home = () => {
   const [idProvince, setIdProvince] = useState('');
   const [idCity, setIdCity] = useState('');
   const {
-    provinces, getAllProvinces, cities, getAllCityProvince, hospitals, getAllHospitalsProvince,
+    provinces, getAllProvinces, cities, getAllCityProvince, hospitals, getAllHospitalsProvince, isLoading,
   } = useContext(MyContext);
 
   const handleChangeRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <main>
       <div className="content">
-        <h2 className="hero">Cari rumah sakit terdekat anda!</h2>
+        <h2 className="hero">Cari ketersediaan kamar di rumah sakit terdekat anda!</h2>
         <h3>Pilih Provinsi</h3>
         <Select
           options={provinces}
@@ -80,8 +80,9 @@ const Home = () => {
         </div>
         <button className="primary__button" type="button" onClick={handleSubmit}>Cari ...</button>
         <div className="card__container">
-          {provinces !== [] && hospitals.length !== 0 ? <h1 className="title">Daftar Rumah Sakit</h1> : <h2>Tidak</h2>}
-          {hospitals.length !== 0 && hospitals.map((hospital) => (
+          {/* {hospitals.length !== 0 ? <h1 className="title">Daftar Kamar Rumah Sakit</h1> : <h2>Tidak</h2>} */}
+          {console.log(nameCity.length)}
+          {nameCity.length !== 0 && isLoading ? <h2 className="loading">Loading...</h2> : hospitals.map((hospital) => (
             <CardHospital
               key={hospital.id}
               id={hospital.id}

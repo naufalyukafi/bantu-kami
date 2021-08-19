@@ -6,11 +6,11 @@ const Navbar = () => (
       <div className="app__bar-brand">
         <h1>#BantuKami</h1>
       </div>
-      <nav className="app__bar-navigation">
+      {/* <nav className="app__bar-navigation">
         <ul>
           <li><a href="#portfolio">covid19</a></li>
         </ul>
-      </nav>
+      </nav> */}
     </div>
   </header>
 );

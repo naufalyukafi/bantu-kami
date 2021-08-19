@@ -29,4 +29,5 @@ export interface IContextValue {
     getAllCityProvince: (id: string) => void;
     hospitals: IHospitals[];
     getAllHospitalsProvince: (provinceId: string, cityId: string, typeId: string) => void;
+    isLoading: boolean;
 }
